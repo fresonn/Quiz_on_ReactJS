@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import classes from './QuizCreator.css'
 import {createControl, validate, formIsValidate} from '../../formWatcher/formWatcher'
+import axios from 'axios'
 
 import Button from '../../components/UI/BUTTONS/Button'
 import Input from '../../components/UI/Input/Input'
@@ -14,10 +15,6 @@ const createOptionControl = (num) => {
     }, { required: true })
 }
 
-
-// function createFormControls = () => {
-//     return
-// }
 
 const QuizCreator = class extends Component {
 
@@ -79,9 +76,23 @@ const QuizCreator = class extends Component {
         })
     }
 
-    createQuizButtonHandler = (event) => {
+    createQuizButtonHandler = async (event) => {
         event.preventDefault()
-        console.log(this.state.quiz)
+
+
+        try {
+            // + .json в ссылку
+            await axios.post('https://quiz-f3332.firebaseio.com/quiz.json', this.state.quiz)
+            // когда сервер ответит
+            this.setState({
+                quiz: [],
+                isFormValid: false,
+                rightAnswerID: 1,
+            })
+        } catch (error) {
+            console.log(error)
+        }
+
     }
 
     inputChangeHandler = (event, controlName) => {
