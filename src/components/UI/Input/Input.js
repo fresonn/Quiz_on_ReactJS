@@ -4,9 +4,6 @@ import classes from './input.css'
 
 
 
-
-
-
 const Input = (props) => {
     const {labelText, inputType, inpValue, onChange, errorMessage, valid, shouldValidate, touched} = props
 

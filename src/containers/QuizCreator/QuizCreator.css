@@ -4,7 +4,8 @@
     padding-top: 50px;
     flex-grow: 1;
     width: 100%;
-    background: linear-gradient(90deg,#1E9600, #FFF200, #FF0000)
+    /* background: linear-gradient(90deg,#1E9600, #FFF200, #FF0000) */
+    background-image: linear-gradient(0deg, #08AEEA 13%, #2AF598 100%);
 }
 
 .QuizCreator > div {
@@ -18,23 +19,24 @@
 }
 
 .QuizCreator form {
-    background: rgb(113, 227, 0);
+    /* background: rgb(113, 227, 0); */
+    background-color: rgba(127, 255, 212, 0.671); 
     border-radius: 20px;
-    padding: 15px;
-    box-shadow: 0px 0px 42px -2px rgba(0,0,0,0.75);
+    padding: 18px 24px;
+    box-shadow: 0px 14px 42px -2px rgba(0,0,0,0.75);
 }
 
 
 .questionWrapper {
     box-sizing: border-box;
     width: 100%;
-    border: 2px solid rgb(255, 89, 0);
-    background: rgba(249, 193, 27, 0.913);
+    /* border: 2px solid rgb(109, 94, 94); */
+    background: #27EEA1;
     padding: 0 10px;
     padding-bottom: 15px;
     border-radius: 14px;
     color: #000;
-    box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.818);
+    box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.945);
 
 }
 
@@ -48,5 +50,7 @@
 .BtnWrapper {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+
 }
 

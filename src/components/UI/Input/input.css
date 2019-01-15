@@ -13,8 +13,11 @@
 
 .Input input {
     box-sizing: border-box;
+    border-radius: 4px;
     display: block;
-    border: 1px solid #bebebe; 
+    border: none;
+    font: inherit;
+    font-weight: 700;
     padding: 7px;
     margin: 0 0 5px;
     width: 100%;

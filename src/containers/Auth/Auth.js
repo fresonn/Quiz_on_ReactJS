@@ -15,7 +15,7 @@ const Auth = class extends Component {
                 type: 'email',
                 label: 'Email',
                 errorMessage: 'Введите правильный email',
-                valid: false, // состояние валидации
+                valid: false, // state валидации
                 touched: false,
                 validation: {
                     required: true,
@@ -28,7 +28,7 @@ const Auth = class extends Component {
                 type: 'password',
                 label: 'Пароль',
                 errorMessage: 'Введите правильный пароль',
-                valid: false, // состояние валидации
+                valid: false,
                 touched: false,
                 validation: {
                     required: true,
@@ -111,6 +111,7 @@ const Auth = class extends Component {
                     labelText={control.label}
                     errorMessage={control.errorMessage}
                     shouldValidate={!!control.validation}
+                    placeholderText={''}
 
 
                     onChange={event => this.onChangeHandler(event, controlName)}
