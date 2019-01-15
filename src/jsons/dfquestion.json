@@ -1,0 +1,35 @@
+[
+    {
+        "id": 1,
+        "question": "Какой тип запроса делает Fetch API по умолчанию",
+        "rightAnswerId": 1,
+        "answers": [
+            { "text": "GET", "id": 1 },
+            { "text": "POST", "id": 2 },
+            { "text": "Не делает действий по умолчанию", "id":3 },
+            { "text": "DELETE", "id":4 }
+        ]
+    },
+    {
+        "id": 2,
+        "question": "Что в JavaScript характеризует дословно \"ничто, пусто\"",
+        "rightAnswerId": 3,
+        "answers": [
+            { "text": "undefined", "id": 1 },
+            { "text": "void", "id": 2 },
+            { "text": "null", "id":3 },
+            { "text": "NaN", "id":4 }
+        ]
+    },
+    {
+        "id": 3,
+        "question": "Кто считается отцом  JavaScript",
+        "rightAnswerId": 4,
+        "answers": [
+            { "text": "Джеймс Гослинг", "id": 1 },
+            { "text": "Бьёрн Страуструп", "id": 2 },
+            { "text": "Дональд Кнут", "id":3 },
+            { "text": "Брендан Эйх", "id":4 }
+        ]
+    }
+]
