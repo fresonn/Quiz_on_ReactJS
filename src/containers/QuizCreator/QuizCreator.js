@@ -6,6 +6,7 @@ import axios from 'axios'
 import Button from '../../components/UI/BUTTONS/Button'
 import Input from '../../components/UI/Input/Input'
 import Select from '../../components/UI/select/Select'
+import QuizNameContainer from './QuizNameContainer/QuizNameContainer'
 
 const createOptionControl = (num) => {
     return createControl({
@@ -19,7 +20,16 @@ const createOptionControl = (num) => {
 const QuizCreator = class extends Component {
 
     state = {
-        quiz: [],
+        // quiz: [],
+        quizObj: {
+            name: '',
+            quiz: []
+        },
+        nameQuiz: {
+            valid: false,
+            name: ''
+        },
+        isQuizReady: false, //** */
         isFormValid: false,
         rightAnswerID: 1,
         formControls: {
@@ -40,7 +50,8 @@ const QuizCreator = class extends Component {
 
     addQuestionButtonHandler = (event) => {
         event.preventDefault()
-        const quiz = [...this.state.quiz]
+        // const quiz = [...this.state.quiz]
+        const quiz = [...this.state.quizObj.quiz]
         const index = quiz.length + 1
 
         const {question, option1, option2, option3, option4} = this.state.formControls
@@ -60,7 +71,10 @@ const QuizCreator = class extends Component {
         quiz.push(questionItem)
 
         this.setState({
-            quiz,
+            // quiz,
+            quizObj: {
+                quiz
+            },
             isFormValid: false,
             rightAnswerID: 1,
             formControls: {
@@ -76,24 +90,41 @@ const QuizCreator = class extends Component {
         })
     }
 
-    createQuizButtonHandler = async (event) => {
+    createQuizButtonHandler = (event) => {
         event.preventDefault()
 
+        this.setState({
+            isQuizReady: true
+        })
 
-        try {
-            // + .json в ссылку
-            await axios.post('https://quiz-f3332.firebaseio.com/quiz.json', this.state.quiz)
-            // когда сервер ответит
-            this.setState({
-                quiz: [],
-                isFormValid: false,
-                rightAnswerID: 1,
-            })
-        } catch (error) {
-            console.log(error)
-        }
+        // try {
+        //     // + .json в ссылку
+        //     await axios.post('https://quiz-f3332.firebaseio.com/quiz.json', this.state.quiz)
+        //     // когда сервер ответит
+        //     this.setState({
+        //         quiz: [],
+        //         isFormValid: false,
+        //         rightAnswerID: 1,
+        //     })
+        // } catch (error) {
+        //     console.log(error)
+        // }
 
     }
+    
+
+    listenerSendingQuizToTheCloud = (value) => {
+        // console.log(name)
+        // console.log(this.state.quizObj)
+        this.setState({
+            quizObj: {
+                name: value,
+                quiz: this.state.quizObj.quiz
+            },
+            isQuizReady: false
+        })
+    }
+
 
     inputChangeHandler = (event, controlName) => {
         const formControls = { ...this.state.formControls }
@@ -116,7 +147,6 @@ const QuizCreator = class extends Component {
             // console.log(control)
             const controlName = Object.keys(this.state.formControls)[ind]
 
-            // костыль на первый input
             const firstQuestionInput = (
                 <div className={classes.questionWrapper} key={ind}>
                     <Input 
@@ -156,7 +186,12 @@ const QuizCreator = class extends Component {
         })
     }
 
+    componentWillUnmount() {
+        console.log('un')
+    }
+
     render() {
+        console.log(this.state.quizObj)
         const select = (
             <Select
                 label={'Выберите правильный ответ'}
@@ -172,28 +207,35 @@ const QuizCreator = class extends Component {
         )
 
 
-        return (
-            <div className={classes.QuizCreator}> 
-                <div>
-                    <h1>Создайте свой тест!</h1>
-                    <form onSubmit={this.onSubmitFormHandelr}>
-                        { this.renderControls() }
-                        { select }
-                        <div className={classes.BtnWrapper}>
-                            <Button
-                                onClick={this.addQuestionButtonHandler}
-                                disabled={!this.state.isFormValid}
-                                classFor={'QuizCreatorButton'}
-                            >Добавить вопрос</Button>
-                            <Button
-                                classFor={'QuizCreatorButton'}
-                                onClick={this.createQuizButtonHandler}
-                                disabled={this.state.quiz.length === 0}
-                                // нет вопросов нет теста :)
-                            >Создать тест</Button>
-                        </div>
-                    </form>
+        const userForm = (
+            <div className={classes.QuizCreator}>
+                <div className={classes.formWrapper}>
+                        <h1 className={classes.Title}>Создайте свой тест!</h1>
+                        {/* { !this.state.isNameAdded ? <QuizNameContainer /> : null } */}
+                        <form onSubmit={this.onSubmitFormHandelr} className={classes.mainForm}>
+                            { this.renderControls() }
+                            { select }
+                            <div className={classes.BtnWrapper}>
+                                <Button
+                                    onClick={this.addQuestionButtonHandler}
+                                    disabled={!this.state.isFormValid}
+                                    classFor={'QuizCreatorButton'}
+                                >Добавить вопрос</Button>
+                                <Button
+                                    classFor={'QuizCreatorButton'}
+                                    onClick={this.createQuizButtonHandler}
+                                    disabled={this.state.quizObj.quiz.length === 0} // нет вопросов нет теста :)
+                                >Создать тест</Button>
+                            </div>
+                        </form>
                 </div>
+            </div>
+        )
+
+
+        return (
+            <div className={classes.QuizCreatorContainer}>
+                { this.state.isQuizReady ? <QuizNameContainer onSubmitButton={this.listenerSendingQuizToTheCloud} /> : userForm }
             </div>
         )
     }

@@ -1,25 +1,29 @@
-.QuizCreator {
+.QuizCreatorContainer {
     display: flex;
     justify-content: center;
-    padding-top: 50px;
-    flex-grow: 1;
+    align-items: center;
+    height: 100vh;
     width: 100%;
-    /* background: linear-gradient(90deg,#1E9600, #FFF200, #FF0000) */
     background-image: linear-gradient(0deg, #08AEEA 13%, #2AF598 100%);
 }
 
-.QuizCreator > div {
+
+.QuizCreator {
+    display: flex;
+    justify-content: center;
+}
+
+.QuizCreator .formWrapper {
     width: 100%;
-    max-width: 600px;
+    max-width: 540px;
     padding: 0 20px;
 }
 
-.QuizCreator h1 {
+.QuizCreator .Title {
     text-align: center;
 }
 
-.QuizCreator form {
-    /* background: rgb(113, 227, 0); */
+.QuizCreator .mainForm {
     background-color: rgba(127, 255, 212, 0.671); 
     border-radius: 20px;
     padding: 18px 24px;
@@ -30,14 +34,12 @@
 .questionWrapper {
     box-sizing: border-box;
     width: 100%;
-    /* border: 2px solid rgb(109, 94, 94); */
     background: #27EEA1;
     padding: 0 10px;
     padding-bottom: 15px;
     border-radius: 14px;
     color: #000;
     box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.945);
-
 }
 
 .questionWrapper label {
@@ -51,6 +53,5 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-
 }
 

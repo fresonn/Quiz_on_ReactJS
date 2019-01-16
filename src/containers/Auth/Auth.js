@@ -20,7 +20,8 @@ const Auth = class extends Component {
                 validation: {
                     required: true,
                     email: true
-                }
+                },
+                spanTag: true
 
             },
             password: {
@@ -33,7 +34,8 @@ const Auth = class extends Component {
                 validation: {
                     required: true,
                     minLength: 7
-                }
+                },
+                spanTag: true
             }
 
         }
@@ -111,8 +113,7 @@ const Auth = class extends Component {
                     labelText={control.label}
                     errorMessage={control.errorMessage}
                     shouldValidate={!!control.validation}
-                    placeholderText={''}
-
+                    spanTag={control.spanTag}
 
                     onChange={event => this.onChangeHandler(event, controlName)}
                 />

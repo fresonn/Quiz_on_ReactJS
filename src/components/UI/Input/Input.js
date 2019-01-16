@@ -5,7 +5,7 @@ import classes from './input.css'
 
 
 const Input = (props) => {
-    const {labelText, inputType, inpValue, onChange, errorMessage, valid, shouldValidate, touched} = props
+    const {labelText, inputType, inpValue, onChange, errorMessage, valid, shouldValidate, touched, spanTag, maxLength} = props
 
     const isInvalid = () => {
         return !valid && shouldValidate && touched
@@ -28,8 +28,11 @@ const Input = (props) => {
                 id={ligamentLabel}
                 value={inpValue}
                 onChange={onChange}
+                maxLength={maxLength}
+                placeholder={isInvalid() && !spanTag ? errorMessage || 'Введите верное значение' : null}
+                // Если нам не нужен спан и есть ошибка валидности
             />
-            { isInvalid() ? <span>{errorMessage || 'Введите верное значение'}</span> : null }
+            { spanTag ? isInvalid() ? <span>{errorMessage || 'Введите верное значение'}</span> : null : null }
         </div>
     )
 }
