@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import classes from './QuizList.css'
+
 import {NavLink} from 'react-router-dom'
 import axios from 'axios'
+import Loader from '../../components/UI/Loader/Loader'
 
 const QuizList = class extends Component {
 
     state = {
-        quizes: []
+        quizes: [],
+        loading: true
     }
 
 
@@ -14,8 +17,8 @@ const QuizList = class extends Component {
         return this.state.quizes.map((quiz, ind) => {
             return (
                 <li key={ind}>
-                    <NavLink to={'/quiz/' + quiz}>
-                        {ind + 1}. {quiz.name}
+                    <NavLink to={'/quiz/' + quiz.id}>
+                        {quiz.name}
                     </NavLink>
                 </li>
             )
@@ -25,15 +28,17 @@ const QuizList = class extends Component {
     async componentDidMount() {
         try {
             const resp = await axios.get('https://quiz-f3332.firebaseio.com/quiz.json')
-            const quizes = Object.keys(resp.data).reduce((arr, key, ind) => {
+            // console.log(resp.data)
+            const quizes = Object.keys(resp.data).reduce((arr, key) => {
+                console.log(key)
                 arr.push({
                     id: key,
-                    name: `Тест №${ind}`
+                    name: resp.data[key].name
                 })
                 return arr
             }, [])
 
-            this.setState({ quizes })
+            this.setState({ quizes, loading: false })
 
         } catch(error) {
             console.log(error)
@@ -41,13 +46,21 @@ const QuizList = class extends Component {
     }
     
     render() {
+
+        const x = (
+                <ul>
+                    { this.renderQuizes() }
+                </ul>
+        )
+
+
         return (
             <div className={classes.QuizList}>
                 <div>
-                    <h1>Список тестов</h1>
-                    <ul>
-                        { this.renderQuizes() }
-                    </ul>
+                    <h1 className={classes.MainTitle}>Мои викторины</h1>
+                    <div className={classes.QuizListWrapper}>
+                        { this.state.loading ? <Loader /> : x }
+                    </div>
                 </div>
             </div>
         )
