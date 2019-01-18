@@ -2,6 +2,7 @@
     padding: 20px;
     color: #000;
     border: 2px solid #000;
+    background-color: rgb(244, 248, 251);
     border-radius: 5px;
     margin: 0 10px;
     box-sizing: border-box; 
@@ -11,4 +12,9 @@
 .Question {
     display: flex;
     justify-content: space-between;
+}
+
+.quizNameTitle {
+    color: rgb(244, 248, 251);
+    margin-left: 10px;
 }

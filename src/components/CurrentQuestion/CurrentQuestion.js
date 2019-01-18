@@ -7,6 +7,8 @@ const CurrentQuestion = (props) => {
     const { answers, question, onAnswerClick, quizLength, answerNumber, state } = props
 
     return (
+        <>
+        <h1 className={classes.quizNameTitle}>{props.nameQuiz}</h1>
         <div className={classes.CurrentQuestion}>
             <p className={classes.Question}>
                 <span>
@@ -21,6 +23,7 @@ const CurrentQuestion = (props) => {
                 onAnswerClick={onAnswerClick}
             />
         </div>
+        </>
     )
 }
 

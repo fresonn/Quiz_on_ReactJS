@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import classes from './Auth.css'
+
 import is from 'is_js'
+import axios from '../../axios/axios-conf'
 
 import Button from '../../components/UI/BUTTONS/Button'
 import Input from '../../components/UI/Input/Input'
@@ -42,12 +44,36 @@ const Auth = class extends Component {
     }
 
 
-    loginHandler = () => {
+    loginHandler = async () => {
+        const API_KEY = 'AIzaSyDGqLTHCNXKd6eszuSxWakdLAicku1_-so'
 
+        const userAuthData = {
+            email: this.state.formControls.email.value,
+            password: this.state.formControls.password.value,
+            returnSecureToken: true // true - нужно самой firebase
+        }
+        try {
+            const resp = await axios.post(`https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=${API_KEY}`, userAuthData)
+            console.log(resp.data)
+        } catch(error) {
+            console.log(error.message)
+        }
     }
 
-    registerHandler = () => {
+    registerHandler = async () => {
+        const API_KEY = 'AIzaSyDGqLTHCNXKd6eszuSxWakdLAicku1_-so'
 
+        const userAuthData = {
+            email: this.state.formControls.email.value,
+            password: this.state.formControls.password.value,
+            returnSecureToken: true // true - нужно самой firebase
+        }
+        try {
+            const resp = await axios.post(`https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=${API_KEY}`, userAuthData)
+            console.log(resp.data)
+        } catch(error) {
+            console.log(error.message)
+        }
     }
 
     submitHandler = (event) => {
@@ -122,6 +148,7 @@ const Auth = class extends Component {
     }
 
     render() {
+        console.log(this.state)
         return (
             <div className={classes.Auth}>
                 <div>

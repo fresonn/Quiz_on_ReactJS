@@ -47,9 +47,8 @@ const QuizNameContainer = class extends Component {
     }
     
     componentWillUnmount() {
-        //странная активность в dev.t по приросту events
+        //странная активность в dev.t по events
         window.removeEventListener('keydown', this.keyPressHandler)
-        console.log(this.state.button)
     }
 
     render() {

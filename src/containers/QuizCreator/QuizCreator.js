@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import classes from './QuizCreator.css'
 import {createControl, validate, formIsValidate} from '../../formWatcher/formWatcher'
-import axios from 'axios'
+import axios from '../../axios/axios-conf'
 
 import Button from '../../components/UI/BUTTONS/Button'
 import Input from '../../components/UI/Input/Input'
@@ -54,7 +54,7 @@ const QuizCreator = class extends Component {
         const questionItem = {
             question: question.value,
             id: index,
-            rightAnswerID: this.state.rightAnswerID,
+            rightAnswerId: this.state.rightAnswerID,  ///// *****
             answers: [
                 { text: option1.value, id: option1.id },
                 { text: option2.value, id: option2.id },
@@ -97,7 +97,7 @@ const QuizCreator = class extends Component {
 
         try {
             // + .json в ссылку
-            await axios.post('https://quiz-f3332.firebaseio.com/quiz.json', {
+            await axios.post('/quiz.json', {
                 name: value,
                 quiz: this.state.quiz
             })
@@ -168,15 +168,12 @@ const QuizCreator = class extends Component {
     }
 
     selectChangeHandler = (event) => {
-        console.log(event.target.value)
         this.setState({
             rightAnswerID: Number(event.target.value)
         })
     }
 
-    componentWillUnmount() {
-        console.log('un')
-    }
+
 
     render() {
         const select = (

@@ -1,19 +1,20 @@
 .Quiz {
     display: flex;
     justify-content: center;
-    padding-top: 100px;
-    flex-grow: 1;
+    align-items: center;
+    /* padding-top: 100px; */
     width: 100%;
-    background: yellow;
-}
-
-
-.Quiz h1 {
-    color: #000;
-    margin-left: 10px;
+    height: 100vh;
+    background: linear-gradient(180deg, #EB3349, #F45C43)
 }
 
 
 .QuizWrapper {
     width: 600px;
+}
+
+.loaderWrapper {
+    border: 2px solid #000;
+    padding: 30px;
+    background-color: rgb(244, 248, 251);
 }

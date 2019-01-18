@@ -16,7 +16,7 @@ const FinishedQuiz = (props) => {
         }
         return count
     }, 0) 
-    console.log(Object.values(results))
+    // console.log(Object.values(results))
 
     return (
         <div className={classes.FinishedQuiz}>
