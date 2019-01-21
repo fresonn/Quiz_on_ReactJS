@@ -1,7 +1,10 @@
 import {combineReducers} from 'redux'
 
 import quizListReducer from './quizList'
+import QuizComponentReducer from './quizReducer'
+
 
 export default combineReducers({
-    quizList: quizListReducer
+    quizList: quizListReducer,
+    quiz: QuizComponentReducer
 })
