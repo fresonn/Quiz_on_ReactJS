@@ -148,7 +148,6 @@ const Auth = class extends Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             <div className={classes.Auth}>
                 <div>
