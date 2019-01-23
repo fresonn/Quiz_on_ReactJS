@@ -8,5 +8,12 @@ export const QuizListActions = {
 // Actions for Quiz Component 
 
 export const quizComponent = {
-    QUIZ_FETCH_DATA: 'QUIZ_FETCH_DATA'
+    QUIZ_FETCH_DATA: 'QUIZ_FETCH_DATA',
+    QUIZ_RESP_ERR: 'QUIZ_RESP_ERR',
+
+
+    QUIZ_NEW_ANSWER_STATE: 'QUIZ_NEW_ANSWER_STATE',
+    QUIZ_FINISH_QUIZ: 'QUIZ_FINISH_QUIZ',
+    QUIZ_NEXT_QUESTION: 'QUIZ_NEXT_QUESTION',
+    QUIZ_RETRY_QUIZ: 'QUIZ_RETRY_QUIZ'
 }
