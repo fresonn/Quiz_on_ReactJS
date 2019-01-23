@@ -17,3 +17,11 @@ export const quizComponent = {
     QUIZ_NEXT_QUESTION: 'QUIZ_NEXT_QUESTION',
     QUIZ_RETRY_QUIZ: 'QUIZ_RETRY_QUIZ'
 }
+
+// Quiz Creator Component 
+
+export const QuizCreatorComponent = {
+    CREATE_QUIZ_QUESTION: 'CREATE_QUIZ_QUESTION',
+    CREATOR_QUIZ_READY: 'CREATOR_QUIZ_READY',
+    CREATOR_RESET_DATA: 'CREATOR_RESET_DATA'
+}
