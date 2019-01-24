@@ -2,10 +2,14 @@ import React, {Component} from 'react'
 import classes from './Auth.css'
 
 import is from 'is_js'
-import axios from '../../axios/axios-conf'
+
 
 import Button from '../../components/UI/BUTTONS/Button'
 import Input from '../../components/UI/Input/Input'
+
+import {connect} from 'react-redux'
+import {authCreator} from '../../redux/actions/AuthActions'
+
 
 const Auth = class extends Component {
 
@@ -44,36 +48,20 @@ const Auth = class extends Component {
     }
 
 
-    loginHandler = async () => {
-        const API_KEY = 'AIzaSyDGqLTHCNXKd6eszuSxWakdLAicku1_-so'
-
-        const userAuthData = {
-            email: this.state.formControls.email.value,
-            password: this.state.formControls.password.value,
-            returnSecureToken: true // true - нужно самой firebase
-        }
-        try {
-            const resp = await axios.post(`https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=${API_KEY}`, userAuthData)
-            console.log(resp.data)
-        } catch(error) {
-            console.log(error.message)
-        }
+    loginHandler = () => {
+        this.props.userAuth(
+            this.state.formControls.email.value,
+            this.state.formControls.password.value,
+            true
+        )  
     }
 
-    registerHandler = async () => {
-        const API_KEY = 'AIzaSyDGqLTHCNXKd6eszuSxWakdLAicku1_-so'
-
-        const userAuthData = {
-            email: this.state.formControls.email.value,
-            password: this.state.formControls.password.value,
-            returnSecureToken: true // true - нужно самой firebase
-        }
-        try {
-            const resp = await axios.post(`https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=${API_KEY}`, userAuthData)
-            console.log(resp.data)
-        } catch(error) {
-            console.log(error.message)
-        }
+    registerHandler = () => {
+        this.props.userAuth(
+            this.state.formControls.email.value,
+            this.state.formControls.password.value,
+            true
+        )
     }
 
     submitHandler = (event) => {
@@ -175,7 +163,10 @@ const Auth = class extends Component {
     }
 }
 
+const mapDispatchTorProps = (dispatch) => {
+    return {
+        userAuth: (email, password, isLogin) => dispatch(authCreator(email, password, isLogin))
+    }
+}
 
-
-
-export default Auth
+export default connect(null, mapDispatchTorProps)(Auth)

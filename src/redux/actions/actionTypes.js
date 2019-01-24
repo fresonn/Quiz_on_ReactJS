@@ -25,3 +25,9 @@ export const QuizCreatorComponent = {
     CREATOR_QUIZ_READY: 'CREATOR_QUIZ_READY',
     CREATOR_RESET_DATA: 'CREATOR_RESET_DATA'
 }
+
+
+export const AuthComponent = {
+    AUTH_SUCCESS_FETCH: 'AUTH_SUCCESS_FETCH',
+    AUTH_LOGOUT: 'AUTH_LOGOUT'
+}

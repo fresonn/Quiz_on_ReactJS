@@ -223,7 +223,6 @@ const QuizCreator = class extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        // QuizCreator
         quiz: state.QuizCreator.quiz,
         isQuizReady: state.QuizCreator.isQuizReady
     }
