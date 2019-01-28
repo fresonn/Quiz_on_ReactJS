@@ -34,7 +34,7 @@ const Auth = class extends Component {
                 value: '',
                 type: 'password',
                 label: 'Пароль',
-                errorMessage: 'Введите правильный пароль',
+                errorMessage: 'Пароль должен содержать более 7 символов',
                 valid: false,
                 touched: false,
                 validation: {

@@ -6,7 +6,6 @@ import axios from '../../axios/axios-conf'
 
 
 export const addQuestionItem = (item) => {
-    console.log(item)
     return {
         type: Creator.CREATE_QUIZ_QUESTION,
         payload: item

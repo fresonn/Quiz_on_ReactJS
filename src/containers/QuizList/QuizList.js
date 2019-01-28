@@ -12,12 +12,6 @@ import fetchData from '../../redux/actions/QuizListCreator'
 
 const QuizList = class extends Component {
 
-    // state = {
-    //     quizzes: [],
-    //     loading: true
-    // }
-
-
     renderQuizes() {
         return this.props.quizzes.map((quiz, ind) => {
             return (
@@ -45,7 +39,7 @@ const QuizList = class extends Component {
         return (
             <div className={classes.QuizList}>
                 <div>
-                    <h1 className={classes.MainTitle}>Мои викторины</h1>
+                    <h1 className={classes.MainTitle}>Викторины</h1>
                     <div className={classes.QuizListWrapper}>
                         { this.props.loading  ? <Loader /> : quizzesList }
                     </div>

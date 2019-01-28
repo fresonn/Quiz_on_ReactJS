@@ -9,7 +9,7 @@ const authSuccess = (token) => {
     }
 }
 
-const logOut = () => {
+export const logOut = () => {
         // .clear() - не подойдет, т.к могут быть и другие записи в localStorage!
     localStorage.removeItem('token')
     localStorage.removeItem('userId')
@@ -60,6 +60,26 @@ export const authCreator = (email, password, isLogin) => {
 
         } catch(error) {
             console.log(error.message)
+        }
+    }
+}
+
+
+// for auto login
+
+export const autoLogin = () => {
+    return dispatch => {
+        const token = localStorage['token']
+        if (!token) {
+            dispatch(logOut())
+        } else {
+            const expirationDate = new Date(localStorage['exirationDate'])
+            if (expirationDate <= new Date()) {
+                dispatch(logOut())
+            } else {
+                dispatch(authSuccess(token))
+                dispatch(autoLogout((expirationDate.getTime() - new Date().getTime()) / 1000))
+            }
         }
     }
 }

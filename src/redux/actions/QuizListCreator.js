@@ -29,7 +29,6 @@ export default () => {
         try {
             const resp = await axios.get('/quiz.json')
             const quizzes = Object.keys(resp.data).reduce((arr, key) => {
-                console.log(key)
                 arr.push({
                     id: key,
                     name: resp.data[key].name

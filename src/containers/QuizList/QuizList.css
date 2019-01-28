@@ -35,6 +35,7 @@
 .QuizListWrapper li a {
     text-decoration: none;
     color: #FFFFFF;
+    font-weight: 700;
     display: block;
     box-sizing: border-box;
     padding: 20px 10px;
@@ -44,6 +45,7 @@
     margin: 5px;
     text-align: center;
     overflow-x: hidden;
+    transition: all 240ms ease-in;
 }
 
 .QuizListWrapper ul li a:hover {

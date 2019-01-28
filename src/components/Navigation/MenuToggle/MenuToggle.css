@@ -12,6 +12,7 @@
 
 .MenuToggle:hover {
     opacity: .7;
+    transform: scale(1.4)
 }
 
 .MenuToggle.open {
