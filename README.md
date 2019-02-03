@@ -10,3 +10,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [redux](https://github.com/reduxjs/redux)
 - [react-redux](https://github.com/reduxjs/react-redux)
 - [redux-thunk](https://github.com/reduxjs/redux-thunk)
+
+
+Deployed site: https://quiz-f3332.firebaseapp.com/
