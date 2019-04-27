@@ -1,7 +1,6 @@
 import axios from 'axios'
 import {AuthComponent as Auth} from '../actions/actionTypes'
 
-
 const authSuccess = (token) => {
     return {
         type: Auth.AUTH_SUCCESS_FETCH,
@@ -38,7 +37,7 @@ export const authCreator = (email, password, isLogin) => {
 
         let url 
 
-        if (isLogin) {
+        if (!isLogin) {
             url = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=${API_KEY}`
         } else {
             url = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=${API_KEY}`
